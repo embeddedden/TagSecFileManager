@@ -29,9 +29,11 @@ CONFIG += c++14
 QMAKE_CXXFLAGS += -Wall -Werror
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    filetreestructure.cpp
 
-HEADERS +=
+HEADERS += \
+    filetreestructure.h
 
 FORMS +=
 
