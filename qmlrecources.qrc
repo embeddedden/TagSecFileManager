@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>FileManagerWindow.qml</file>
+        <file>Resources/fileIcon.png</file>
+        <file>Resources/dirIcon.png</file>
+        <file>Resources/shieldIcon.png</file>
+        <file>Resources/infoIcon.png</file>
     </qresource>
 </RCC>
