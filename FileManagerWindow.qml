@@ -11,6 +11,10 @@ ApplicationWindow {
     height: 480
     width: 640
     visible: true
+    property int pxInMm: Screen.pixelDensity  //to define sizes in millimeters
+    property int entryHeight: 12*pxInMm
+    property int entryIconSize: entryHeight-4*pxInMm //mm
+    property int smallIconSize: entryIconSize-2*pxInMm
     //    ListModel {
     //        id: fileListModel
     //    }
@@ -31,15 +35,18 @@ ApplicationWindow {
             currentIndex: 0
             Component {
                 id: entryItem
+                // define an item of a list of dir entries
+                //TODO: what to do if we can't populate (empty dir (due to mistake))
                 Rectangle {
                     id: itemRect
                     width: parent.width
-                    height: 36
+                    height: entryHeight
                     color: "transparent"
-                    border.width: 0.5
-                    //border.color: "grey"
+                    border.width: 0.5*Screen.pixelDensity
+                    border.color: "grey"
                     radius: 5
                     z: 5
+                    // make item selectable by placing a MouseArea inside
                     MouseArea {
                            anchors.fill: parent
                            propagateComposedEvents: true
@@ -48,63 +55,62 @@ ApplicationWindow {
                        }
                     RowLayout{
                         width: parent.width
-                        // anchors.centerIn: itemRect.verticalCenter
+                        anchors.fill: parent
                         Rectangle {
                             width: iconImage.width
                             id: zeroRec
-                            //anchors.left: parent.left
-                            height: 32
-                            Layout.leftMargin: 3
+                            border.width: 0.1*pxInMm+1
+                            radius: 4
+                            height: entryIconSize
+                            Layout.leftMargin: 1*pxInMm
                             Layout.alignment: Qt.AlignVCenter
                             Image {
                                 id: iconImage
+                                width: entryIconSize
+                                height: entryIconSize
                                 fillMode: Image.PreserveAspectFit
                                 source: "Resources/" + modelData.split(':')[0]+"Icon.png"
+
                             }
                         }
 
                         Text {
                             id: firstText
                             text: modelData.split(':')[1]
+                            font.pointSize: 16
+                            font.family: "Helvetica"
 
                         }
                         RowLayout {
-                            //                        anchors.left: firstRec.right
-                            //                        anchors.right: parent.right
-                            //anchors.centerIn: itemRect.verticalCenter
                             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                             Button {
                                 id: shieldButton
                                 icon.source: "Resources/shieldIcon.png"
-                                icon.width: 24
-                                icon.height: 24
-                                Layout.rightMargin: 10
-                                Layout.topMargin: 2
+                                icon.width: smallIconSize
+                                icon.height: smallIconSize
+                                Layout.rightMargin: 2*pxInMm
                                 Layout.alignment: Qt.AlignVCenter
                                 background: Rectangle {
-                                    width:  iconImage.width
-                                    height: iconImage.height
                                     color: shieldButton.down ? "#d6d6d6" : "#f6f6f6"
                                     border.color: "#26282a"
-                                    border.width: 1
+                                    border.width: 0.1*pxInMm+1
                                     radius: 4
                                 }
                                 onClicked: console.info("Shielded")
                             }
                             Button {
                                 id: infoButton
+                                width: smallIconSize
+                                height: smallIconSize
                                 icon.source: "Resources/infoIcon.png"
-                                icon.width: 24
-                                icon.height: 24
-                                Layout.rightMargin: 20
-                                Layout.topMargin: 2
+                                icon.width: smallIconSize
+                                icon.height: smallIconSize
+                                Layout.rightMargin: 4*pxInMm
                                 Layout.alignment: Qt.AlignVCenter
                                 background: Rectangle {
-                                    width: iconImage.width
-                                    height: iconImage.height
                                     color: infoButton.down ? "#d6d6d6" : "#f6f6f6"
                                     border.color: "#26282a"
-                                    border.width: 1
+                                    border.width: 0.1*pxInMm+1
                                     radius: 4
                                 }
                             }

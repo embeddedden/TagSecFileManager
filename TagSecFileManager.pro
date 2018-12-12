@@ -23,6 +23,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+#android {
+#    TEMPLATE = app  # for Android this is an "app"
+#}
 
 CONFIG += c++14
 
@@ -39,7 +42,15 @@ FORMS +=
 
 DISTFILES += \
     FileManagerWindow.qml \
-    LICENSE
+    LICENSE \
+#    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/gradle/wrapper/gradle-wrapper.jar \
+#    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/gradlew \
+#    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/res/values/libs.xml \
+#    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/build.gradle \
+#    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/gradle/wrapper/gradle-wrapper.properties \
+#    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/gradlew.bat
 
 RESOURCES += \
     qmlrecources.qrc
+
+#ANDROID_PACKAGE_SOURCE_DIR = /home/denis/bin/Qt5.12.0/5.12.0/android_x86/src/android
