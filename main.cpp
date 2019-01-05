@@ -18,14 +18,11 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QQmlApplicationEngine engine(QUrl(QStringLiteral("qrc:/FileManagerWindow.qml")));
     FileTreeStructure fts;
-    fts.getEntries("../");
+    fts.changeDir("../");
 
     qDebug() << fts.getCurrentPath() << fts.getDirContent();
 
-    QQmlContext * ctxt = engine.rootContext();
-    ctxt->setContextProperty("fileListModel", QVariant::fromValue(fts.getTypedDirContent()));
- //   ctxt->setContextProperty("entriesTypes", fts.getEntriesTypes());
-    //engine.load(QUrl(QStringLiteral("qrc:/FileManagerWindow.qml")));
+    engine.rootContext()->setContextProperty("fts", &fts);
     int rc = app.exec();
     return rc;
 

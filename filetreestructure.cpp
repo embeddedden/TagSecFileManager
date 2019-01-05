@@ -10,8 +10,7 @@ FileTreeStructure::FileTreeStructure(QObject *parent) : QObject(parent)
 
 }
 
-void FileTreeStructure::getEntries (const QString pathToDir) {
-    currentDir = std::make_unique<QDir>(pathToDir);
+void FileTreeStructure::populateDir () {
     dirContent = currentDir->entryList();
     entriesTypes.clear();
     QFileInfoList currentDirInfo = currentDir->entryInfoList();
@@ -27,6 +26,19 @@ void FileTreeStructure::getEntries (const QString pathToDir) {
             qDebug() << "other:" << dirContent[i];
         }
     }
+}
+
+bool FileTreeStructure::changeDir(const QString &newDir)
+{
+    if (!currentDir->cd(newDir))
+    {
+        qDebug() << "Not a directory";
+        return false;
+    } else {
+        populateDir();
+        emit fileListModelChanged();
+    }
+    return true;
 }
 
 const QStringList FileTreeStructure::getTypedDirContent() {

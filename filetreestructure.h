@@ -10,18 +10,18 @@
 class FileTreeStructure : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QStringList fileListModel READ getTypedDirContent NOTIFY fileListModelChanged)
 public:
     explicit FileTreeStructure(QObject *parent = nullptr);
 //    FileTreeStructure(QObject *parent = nullptr, QString defaultStartDir = "..");
 
-    void getEntries (const QString pathToDir);
     const QString getCurrentPath() {
         return currentDir->absolutePath();
     }
     const QStringList getDirContent() {
         return currentDir->entryList();
     }
-
+    Q_INVOKABLE bool changeDir(const QString &folder);
     // provides dirContent with its type: "type:enrtyname"
     // this code smells
     const QStringList getTypedDirContent();
@@ -32,8 +32,11 @@ private:
     std::unique_ptr<QDir> currentDir;
     QStringList dirContent;
     QStringList entriesTypes;
-signals:
 
+    //Obtain directory's content
+    void populateDir ();
+signals:
+    void fileListModelChanged();
 public slots:
 };
 

@@ -15,9 +15,9 @@ ApplicationWindow {
     property int entryHeight: 12*pxInMm
     property int entryIconSize: entryHeight-4*pxInMm //mm
     property int smallIconSize: entryIconSize-2*pxInMm
-    //    ListModel {
-    //        id: fileListModel
-    //    }
+//        ListModel {
+//            id: fileListModel
+//        }
     ScrollView {
         anchors.left: parent.left
         anchors.right: parent.right
@@ -28,7 +28,7 @@ ApplicationWindow {
         Keys.onUpPressed: entryList.decrementCurrentIndex()
         ListView {
             id:entryList
-            model: fileListModel
+            model: fts.fileListModel
             clip: true
             keyNavigationEnabled: true
             highlightFollowsCurrentItem: true
@@ -51,6 +51,7 @@ ApplicationWindow {
                            anchors.fill: parent
                            propagateComposedEvents: true
                            onClicked: {entryList.currentIndex = index; mouse.accepted=false;}
+                           onDoubleClicked: {fts.changeDir(firstText.text)}
 
                        }
                     RowLayout{
