@@ -5,5 +5,7 @@
         <file>Resources/dirIcon.png</file>
         <file>Resources/shieldIcon.png</file>
         <file>Resources/infoIcon.png</file>
+        <file>FolderEntriesView.qml</file>
+        <file>ProtectionDialog.qml</file>
     </qresource>
 </RCC>

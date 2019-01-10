@@ -49,6 +49,8 @@ DISTFILES += \
 #    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/build.gradle \
 #    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/gradle/wrapper/gradle-wrapper.properties \
 #    ../../../bin/Qt5.12.0/5.12.0/android_x86/src/android/gradlew.bat
+    FolderEntriesView.qml \
+    ProtectionDialog.qml
 
 RESOURCES += \
     qmlrecources.qrc
