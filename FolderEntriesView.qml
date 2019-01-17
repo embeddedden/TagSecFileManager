@@ -66,8 +66,10 @@ Rectangle {
                         Text {
                             id: firstText
                             text: modelData.split(':')[1]
+                            Layout.fillWidth: true
                             font.pointSize: 16
                             font.family: "Helvetica"
+                            elide: Text.ElideRight
                         }
                         RowLayout {
                             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
