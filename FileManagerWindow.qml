@@ -16,9 +16,14 @@ ApplicationWindow {
     property int entryIconSize: entryHeight-4*pxInMm //mm
     property int smallIconSize: entryIconSize-2*pxInMm
 
-//    FolderEntriesView {
-//        id: comp
-//    }
+    property string highlightBorderColor: "black"
+    property int highlightBorderWidth: 1
+    property int highlightZ: 0
+
+    property int fontDefaultSize: 12
+    property string fontDefaultFamily: "Helvetica"
+
+    property int elementRectRadius: 0
 
     Loader {
         id: topLoader

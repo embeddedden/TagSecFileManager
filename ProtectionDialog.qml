@@ -8,6 +8,7 @@ import QtQml.Models 2.3
 Rectangle {
     id: protectionScreen
     anchors.fill: parent
+    focus: true
     ListModel {
         id: tagModel
         ListElement {
@@ -64,6 +65,9 @@ Rectangle {
                                 text: tagName
                                 Layout.alignment: Qt.AlignLeft
                                 Layout.leftMargin: 5*Screen.pixelDensity
+                                font.pointSize: fontDefaultSize
+                                font.family: fontDefaultFamily
+                                elide: Text.ElideRight
                             }
                             Button {
                                 id: enableTag
@@ -77,9 +81,17 @@ Rectangle {
                     }
                 }
                 delegate: tagComponent
-                highlight:  Rectangle { border.color:  "black"; border.width: 2;  color: "transparent"}
+                highlight:  Rectangle { border.color: highlightBorderColor ; border.width: highlightBorderWidth;  z:highlightZ; color: "#CCCCCC"}
                 spacing: 3
             }
         }
+    }
+    Keys.onBackPressed: {
+        console.log("The key pressed")
+        topLoader.setSource("FolderEntriesView.qml")
+    }
+    Keys.onEscapePressed: {
+        console.log("The key pressed")
+        topLoader.setSource("FolderEntriesView.qml")
     }
 }

@@ -34,8 +34,7 @@ Rectangle {
                     color: "transparent"
                     border.width: 0.5*Screen.pixelDensity
                     border.color: "grey"
-                    radius: 5
-                    z: 5
+                    radius: elementRectRadius
                     // make item selectable by placing a MouseArea inside
                     MouseArea {
                         anchors.fill: parent
@@ -67,8 +66,8 @@ Rectangle {
                             id: firstText
                             text: modelData.split(':')[1]
                             Layout.fillWidth: true
-                            font.pointSize: 16
-                            font.family: "Helvetica"
+                            font.pointSize: fontDefaultSize
+                            font.family: fontDefaultFamily
                             elide: Text.ElideRight
                         }
                         RowLayout {
@@ -109,7 +108,7 @@ Rectangle {
                 }
             }
             delegate: entryItem
-            highlight:  Rectangle { border.color:  "black"; border.width: 2; radius: 5; z: 5; color: "transparent"}
+            highlight:  Rectangle { border.color: highlightBorderColor; border.width: highlightBorderWidth; radius: 5; z: highlightZ; color: "#CCCCCC"}
             spacing: 3
         }
     }
