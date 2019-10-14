@@ -44,14 +44,16 @@ Rectangle {
                     }
                     RowLayout{
                         width: parent.width
-                        anchors.fill: parent
+                        //anchors.fill: parent
+                        Layout.fillHeight: parent
                         Rectangle {
                             width: iconImage.width
                             id: zeroRec
-                            border.width: 0.1*pxInMm+1
-                            radius: 4
+                            border.width:  0// 0.1*pxInMm+1
+                            radius: 0
                             height: entryIconSize
                             Layout.leftMargin: 1*pxInMm
+                            Layout.topMargin: 2*pxInMm
                             Layout.alignment: Qt.AlignVCenter
                             Image {
                                 id: iconImage
@@ -74,33 +76,47 @@ Rectangle {
                             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                             Button {
                                 id: shieldButton
-                                icon.source: "Resources/shieldIcon.png"
-                                icon.width: smallIconSize
-                                icon.height: smallIconSize
+//                                icon.source: "Resources/shieldIcon.png"
+//                                icon.width: smallIconSize
+//                                icon.height: smallIconSize
                                 Layout.rightMargin: 2*pxInMm
                                 Layout.alignment: Qt.AlignVCenter
                                 background: Rectangle {
                                     color: shieldButton.down ? "#d6d6d6" : "#f6f6f6"
                                     border.color: "#26282a"
                                     border.width: 0.1*pxInMm+1
-                                    radius: 4
+                                    width: entryIconSize
+                                    height: entryIconSize
+                                    radius: 0
+                                    Image {
+                                        anchors.fill: parent
+                                        fillMode: Image.PreserveAspectFit
+                                        source: "Resources/shieldIcon.png"
+                                    }
                                 }
                                 onClicked: { console.info("Shielded"); topLoader.source="ProtectionDialog.qml"}
                             }
                             Button {
                                 id: infoButton
-                                width: smallIconSize
-                                height: smallIconSize
-                                icon.source: "Resources/infoIcon.png"
-                                icon.width: smallIconSize
-                                icon.height: smallIconSize
+                                //width: smallIconSize
+                                //height: smallIconSize
+//                                icon.source: "Resources/infoIcon.png"
+//                                icon.width: smallIconSize
+//                                icon.height: smallIconSize
                                 Layout.rightMargin: 4*pxInMm
                                 Layout.alignment: Qt.AlignVCenter
                                 background: Rectangle {
                                     color: infoButton.down ? "#d6d6d6" : "#f6f6f6"
                                     border.color: "#26282a"
                                     border.width: 0.1*pxInMm+1
-                                    radius: 4
+                                    width: entryIconSize
+                                    height: entryIconSize
+                                    radius: 0
+                                    Image {
+                                        anchors.fill: parent
+                                        fillMode: Image.PreserveAspectFit
+                                        source: "Resources/infoIcon.png"
+                                    }
                                 }
                             }
                         }
