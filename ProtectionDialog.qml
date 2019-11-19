@@ -9,21 +9,7 @@ Rectangle {
     id: protectionScreen
     anchors.fill: parent
     focus: true
-    ListModel {
-        id: tagModel
-        ListElement {
-            tagName: "No internet"
-            enabledTag: false
-        }
-        ListElement {
-            tagName: "Internet"
-            enabledTag: false
-        }
-        ListElement {
-            tagName: "Confidential"
-            enabledTag: true
-        }
-    }
+
     ColumnLayout {
         id: tagSearchLayout
         anchors.fill: parent
@@ -38,7 +24,7 @@ Rectangle {
             Layout.fillHeight: true
             ListView {
                 id: tagListView
-                model: tagModel
+                model: secTagManager.secTags
                 clip: true
                 keyNavigationEnabled: true
                 highlightFollowsCurrentItem: true
@@ -62,7 +48,7 @@ Rectangle {
                             anchors.fill: parent
                             Text {
                                 id: tagNameText
-                                text: tagName
+                                text: modelData.tagName
                                 Layout.alignment: Qt.AlignLeft
                                 Layout.leftMargin: 5*Screen.pixelDensity
                                 font.pointSize: fontDefaultSize
@@ -74,8 +60,9 @@ Rectangle {
                                 Layout.alignment: Qt.AlignRight
                                 Layout.rightMargin: 5*Screen.pixelDensity
                                // text: enabledTag ? qsTr("Enabled") : qsTr("Turn on")
-                                checked: enabledTag
-                                onClicked: { enabledTag = !enabledTag}
+                                checked: modelData.attached
+                                onClicked: { //do something
+                                }
                             }
                         }
                     }

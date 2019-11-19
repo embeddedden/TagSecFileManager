@@ -33,10 +33,12 @@ QMAKE_CXXFLAGS += -Wall -Werror
 
 SOURCES += \
         main.cpp \
-    filetreestructure.cpp
+    filetreestructure.cpp \
+    securitytagsmanager.cpp
 
 HEADERS += \
-    filetreestructure.h
+    filetreestructure.h \
+    securitytagsmanager.h
 
 FORMS +=
 

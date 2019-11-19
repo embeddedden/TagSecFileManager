@@ -10,8 +10,9 @@
 #include <QtQuick/qquickitem.h>
 #include <QtQuick/qquickview.h>
 
+#include <QStringList>
 #include "filetreestructure.h"
-
+#include "securitytagsmanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,6 +22,11 @@ int main(int argc, char *argv[])
     fts.changeDir("../");
 
     qDebug() << fts.getCurrentPath() << fts.getDirContent();
+    const QString tmpFilename("picture");
+    SecurityTagsManager secTagManager;
+    //QVariant tagList = secTagManager.secTags();
+    //engine.rootContext()->setContextProperty("stringModel", QVariant::fromValue(tagList));
+    engine.rootContext()->setContextProperty("secTagManager", &secTagManager);
 
     engine.rootContext()->setContextProperty("fts", &fts);
     int rc = app.exec();
