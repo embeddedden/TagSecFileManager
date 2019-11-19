@@ -69,12 +69,12 @@ Rectangle {
                                 font.family: fontDefaultFamily
                                 elide: Text.ElideRight
                             }
-                            Button {
+                            CheckBox {
                                 id: enableTag
                                 Layout.alignment: Qt.AlignRight
                                 Layout.rightMargin: 5*Screen.pixelDensity
-                                text: enabledTag ? qsTr("Enabled") : qsTr("Turn on")
-                                down: enabledTag
+                               // text: enabledTag ? qsTr("Enabled") : qsTr("Turn on")
+                                checked: enabledTag
                                 onClicked: { enabledTag = !enabledTag}
                             }
                         }

@@ -60,7 +60,6 @@ Rectangle {
                                 height: entryIconSize
                                 fillMode: Image.PreserveAspectFit
                                 source: "Resources/" + modelData.split(':')[0]+"Icon.png"
-
                             }
                         }
                         Text {
