@@ -71,7 +71,6 @@ Rectangle {
                             elide: Text.ElideRight
                         }
                         RowLayout {
-                            anchors.verticalCenter: parent.verticalCenter
                             Button {
                                 id: shieldButton
                                 Layout.rightMargin: 2*pxInMm
@@ -83,7 +82,6 @@ Rectangle {
                                 id: infoButton
                                 text: "Info"
                                 Layout.rightMargin: 4*pxInMm
-                                anchors.horizontalCenter: parent.verticalCenter
                             }
                         }
                     }
