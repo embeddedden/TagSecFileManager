@@ -24,6 +24,7 @@ ApplicationWindow {
     property string fontDefaultFamily: "Helvetica"
 
     property int elementRectRadius: 0
+    property string currentPath: ""
 
     Loader {
         id: topLoader

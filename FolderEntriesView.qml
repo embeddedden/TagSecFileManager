@@ -18,7 +18,7 @@ Rectangle {
         Keys.onUpPressed: entryList.decrementCurrentIndex()
         ListView {
             id:entryList
-            model: fts.fileListModel
+            model: fts.objectListModel
             clip: true
             keyNavigationEnabled: true
             highlightFollowsCurrentItem: true
@@ -40,7 +40,7 @@ Rectangle {
                         anchors.fill: parent
                         propagateComposedEvents: true
                         onClicked: {entryList.currentIndex = index; mouse.accepted=false;}
-                        onDoubleClicked: {fts.changeDir(firstText.text)}
+                        onDoubleClicked: {fts.changeDir(filenameText.text)}
                     }
                     RowLayout{
                         width: parent.width
@@ -59,12 +59,12 @@ Rectangle {
                                 width: entryIconSize
                                 height: entryIconSize
                                 fillMode: Image.PreserveAspectFit
-                                source: "Resources/" + modelData.split(':')[0]+"Icon.png"
+                                source: "Resources/" + modelData.objectType+"Icon.png"
                             }
                         }
                         Text {
-                            id: firstText
-                            text: modelData.split(':')[1]
+                            id: filenameText
+                            text: modelData.filename
                             Layout.fillWidth: true
                             font.pointSize: fontDefaultSize
                             font.family: fontDefaultFamily
@@ -72,11 +72,15 @@ Rectangle {
                         }
                         RowLayout {
                             Button {
-                                id: shieldButton
+                                id: tagButton
                                 Layout.rightMargin: 2*pxInMm
                                 Layout.alignment: Qt.AlignVCenter
                                 text: "Tags"
-                                onClicked: { console.info("Shielded"); topLoader.source="ProtectionDialog.qml"}
+                                onClicked: {
+                                    console.info("Go to tag dialog");
+                                    currentPath = modelData.filename;
+                                    topLoader.source="ProtectionDialog.qml"
+                                }
                             }
                             Button {
                                 id: infoButton
