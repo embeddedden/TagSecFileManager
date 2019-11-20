@@ -7,6 +7,7 @@
 #include <QList>
 #include <QVariant>
 #include <QVariantList>
+#include <QDebug>
 
 class TagObject : public QObject
 {
@@ -31,6 +32,10 @@ public:
     {
         return m_attached;
     }
+    void setAttached(bool newVal)
+    {
+        m_attached = newVal;
+    }
 signals:
     void tagNameChanged();
     void attachedChanged();
@@ -52,6 +57,8 @@ public:
     //returns tags of a file filename
     QVariant secTags();
     Q_INVOKABLE void updateTags();
+    Q_INVOKABLE void detachTag(QString fileName, QString tagName);
+    Q_INVOKABLE void attachTag(QString fileName, QString tagName);
 signals:
     void secTagsChanged();
 

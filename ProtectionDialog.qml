@@ -62,6 +62,11 @@ Rectangle {
                                // text: enabledTag ? qsTr("Enabled") : qsTr("Turn on")
                                 checked: modelData.attached
                                 onClicked: { //do something
+                                    if (checked == false) {
+                                        secTagManager.detachTag("randomFileName", modelData.tagName)
+                                    } else {
+                                        secTagManager.attachTag("randomFileName", modelData.tagName)
+                                    }
                                 }
                             }
                         }
