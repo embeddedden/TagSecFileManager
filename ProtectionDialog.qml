@@ -9,7 +9,6 @@ Rectangle {
     id: protectionScreen
     anchors.fill: parent
     focus: true
-
     ColumnLayout {
         id: tagSearchLayout
         anchors.fill: parent
@@ -63,9 +62,13 @@ Rectangle {
                                 checked: modelData.attached
                                 onClicked: { //do something
                                     if (checked == false) {
-                                        secTagManager.detachTag("randomFileName", modelData.tagName)
+                                        secTagManager.detachTag(currentPath, modelData.tagName)
+                                        console.log("Detach tag",
+                                                    modelData.tagName, "from", currentPath)
                                     } else {
-                                        secTagManager.attachTag("randomFileName", modelData.tagName)
+                                        secTagManager.attachTag(currentPath, modelData.tagName)
+                                        console.log("Attach tag",
+                                                    modelData.tagName,"to", currentPath)
                                     }
                                 }
                             }

@@ -51,10 +51,11 @@ const QStringList FileTreeStructure::getTypedDirContent() {
 
 QVariant FileTreeStructure::objectListModel()
 {
+    QString currentPath = currentDir->absolutePath();
     //FIXME: some additional check are required (empty dir?)
     objectList.clear();
     for (int i = 0; i < dirContent.length(); i++)
-        objectList.append(new FilenameObject(dirContent[i], entriesTypes[i], \
+        objectList.append(new FilenameObject(dirContent[i], currentPath,\
                                              entriesTypes[i]));
     return QVariant::fromValue(objectList);
 }

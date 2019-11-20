@@ -78,7 +78,7 @@ Rectangle {
                                 text: "Tags"
                                 onClicked: {
                                     console.info("Go to tag dialog");
-                                    currentPath = modelData.filename;
+                                    currentPath = modelData.fullPath + "/" + modelData.filename;
                                     topLoader.source="ProtectionDialog.qml"
                                 }
                             }
