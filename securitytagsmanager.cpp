@@ -1,15 +1,34 @@
 #include "securitytagsmanager.h"
+#include <SecurityTags.h>
+#include <vector>
+#include <string>
+#include <map>
 
 SecurityTagsManager::SecurityTagsManager(QObject *parent) : QObject(parent)
 {
-    tmpTags.append(new TagObject("Tag 1", true));
-    tmpTags.append(new TagObject("Tag 2", true));
-    tmpTags.append(new TagObject("Tag 3", false));
+    initializeTags();
+//    tmpTags.append(new TagObject("Tag 1", true));
+//    tmpTags.append(new TagObject("Tag 2", true));
+//    tmpTags.append(new TagObject("Tag 3", false));
 }
 
 QVariant SecurityTagsManager::secTags()
 {
     //Q_UNUSED(fileName);
+    std::vector <std::string> tags, allTags;
+    getTags(m_currentFilePath.toStdString(), tags);
+    getAllPossibleTags(allTags);
+    for (auto t:tags)
+    {
+        tmpTags.append(new TagObject(QString::fromStdString(t), true));
+    }
+    for (auto atag:allTags)
+    {
+        if (std::find(tags.begin(), tags.end(), atag) == tags.end())
+        {
+            tmpTags.append(new TagObject(QString::fromStdString(atag), false));
+        }
+    }
     return QVariant::fromValue(tmpTags);
 }
 

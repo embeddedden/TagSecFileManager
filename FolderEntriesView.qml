@@ -79,6 +79,8 @@ Rectangle {
                                 onClicked: {
                                     console.info("Go to tag dialog");
                                     currentPath = modelData.fullPath + "/" + modelData.filename;
+                                    //this doesn't look safe, a check is required on c++ side:
+                                    secTagManager.setCurrentFilePath(currentPath);
                                     topLoader.source="ProtectionDialog.qml"
                                 }
                             }

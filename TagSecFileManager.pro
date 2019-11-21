@@ -57,4 +57,8 @@ DISTFILES += \
 RESOURCES += \
     qmlrecources.qrc
 
+LIBS += -L/home/embden/Projects/libsectag -lsectag -lselinux
+
+INCLUDEPATH += /home/embden/Projects/libsectag
+
 #ANDROID_PACKAGE_SOURCE_DIR = /home/denis/bin/Qt5.12.0/5.12.0/android_x86/src/android

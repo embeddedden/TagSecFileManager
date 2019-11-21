@@ -59,12 +59,17 @@ public:
     Q_INVOKABLE void updateTags();
     Q_INVOKABLE void detachTag(QString fileName, QString tagName);
     Q_INVOKABLE void attachTag(QString fileName, QString tagName);
+    Q_INVOKABLE void setCurrentFilePath(QString currentFilePath)
+    {
+        m_currentFilePath = currentFilePath;
+    }
 signals:
     void secTagsChanged();
 
 public slots:
 
 private:
+    QString m_currentFilePath;
     QList <QObject*> tmpTags;
 };
 
