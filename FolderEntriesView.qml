@@ -51,6 +51,7 @@ Rectangle {
                             border.width:  0// 0.1*pxInMm+1
                             radius: 0
                             height: entryIconSize
+                            color: "transparent"
                             Layout.leftMargin: 1*pxInMm
                             Layout.topMargin: 2*pxInMm
                             Layout.alignment: Qt.AlignVCenter
