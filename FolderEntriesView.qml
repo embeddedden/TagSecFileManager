@@ -30,7 +30,7 @@ Rectangle {
                 Rectangle {
                     id: itemRect
                     width: parent.width
-                    height: entryHeight
+                    height:  tagButton.height + 2*Screen.pixelDensity
                     color: "transparent"
                     border.width: 0.5*Screen.pixelDensity
                     border.color: "grey"
