@@ -18,6 +18,7 @@ QVariant SecurityTagsManager::secTags()
     std::vector <std::string> tags, allTags;
     getTags(m_currentFilePath.toStdString(), tags);
     getAllPossibleTags(allTags);
+    tmpTags.clear();
     for (auto t:tags)
     {
         tmpTags.append(new TagObject(QString::fromStdString(t), true));
@@ -56,16 +57,19 @@ void SecurityTagsManager::detachTag(QString fileName, QString tagName)
 
 void SecurityTagsManager::attachTag(QString fileName, QString tagName)
 {
-    Q_UNUSED(fileName);
-    TagObject * a;
-    for (auto t:tmpTags)
-    {
-        a = dynamic_cast<TagObject*>(t);
-        if (a->tagName() == tagName)
-        {
-            a->setAttached(true);
-            qDebug() << a->tagName() << "changed to true";
-            break;
-        }
-    }
+//    Q_UNUSED(fileName);
+//    TagObject * a;
+//    for (auto t:tmpTags)
+//    {
+//        a = dynamic_cast<TagObject*>(t);
+//        if (a->tagName() == tagName)
+//        {
+//            a->setAttached(true);
+//            qDebug() << a->tagName() << "changed to true";
+//            break;
+//        }
+//    }
+    addTag(fileName.toStdString(), tagName.toStdString());
+    secTags();
+    emit secTagsChanged();
 }
