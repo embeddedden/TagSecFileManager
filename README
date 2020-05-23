@@ -1,1 +1,11 @@
+disclaimer: TagSecFileManage right now is in a very early stage of development. You probably can't use it right now without modifying SELinux-tools.
+
 TagSecFileManager is a file manager that allows users to make security labels for files.
+It will allow users to easily and naturally protect their confidential data. It will work with SELinux and other security providers.
+Here are confidential files:
+<img src="https://i.imgur.com/lu6rOky.png"/>  
+and here are Security Tags setting dialog:
+<img src="https://i.imgur.com/OWwRGor.png"/>  
+
+Now, only apps with the same tags can access your files.
+
